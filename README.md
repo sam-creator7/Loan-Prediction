@@ -8,8 +8,6 @@ Data Import
 
 The first step of this project is to import the loan data set into Python, which can be done using the pandas library. The data is stored in a csv file and is loaded into a pandas dataframe for further processing.
 
-swift
-Copy code
 import pandas as pd
 data = pd.read_csv("C:\\Users\\admin\\Desktop\\trimester 9\\ML\\load_train.csv")
 print(data)
@@ -17,8 +15,6 @@ Data Cleaning and Preprocessing
 
 Next, the data is checked for missing values. The missing values are filled with either the mean value for numerical data, or the most frequently occurring value for categorical data.
 
-kotlin
-Copy code
 data.Gender = data.Gender.fillna("Male")
 data.Married = data.Married.fillna("Yes")
 data.Dependents = data.Dependents.fillna(0)
@@ -28,20 +24,15 @@ data.Loan_Amount_Term = data.Loan_Amount_Term.fillna(360.0)
 data.Credit_History = data.Credit_History.fillna(1.0)
 After filling the missing values, the data is split into the input features (X) and target variable (y). The input features include all the variables except the loan approval status.
 
-css
-Copy code
 X = data.iloc[:, 1: 12].values
 y = data.iloc[:, 12].values
 The next step is to split the data into the training and test set, which can be done using the train_test_split function from the sklearn.model_selection library.
 
-python
-Copy code
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state = 0)
 Categorical data needs to be encoded before the model can be trained on it. This can be done using the LabelEncoder class from the sklearn.preprocessing library.
 
-scss
-Copy code
+
 from sklearn.preprocessing import LabelEncoder
 labelencoder_X = LabelEncoder()
 X_train[:,0] = labelencoder_X.fit_transform(X_train[:,0])
