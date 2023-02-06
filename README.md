@@ -1,17 +1,18 @@
 # Loan-Prediction
 
-Loan Prediction Project
+**Loan Prediction Project**
 
 This project is aimed at building a machine learning model that will predict whether a loan will be approved or not, based on certain features such as income, loan amount, loan term, credit history, property area, etc.
 
-Data Import
+**Data Import**
 
 The first step of this project is to import the loan data set into Python, which can be done using the pandas library. The data is stored in a csv file and is loaded into a pandas dataframe for further processing.
 
 import pandas as pd
 data = pd.read_csv("C:\\Users\\admin\\Desktop\\trimester 9\\ML\\load_train.csv")
 print(data)
-Data Cleaning and Preprocessing
+
+**Data Cleaning and Preprocessing**
 
 Next, the data is checked for missing values. The missing values are filled with either the mean value for numerical data, or the most frequently occurring value for categorical data.
 
@@ -22,10 +23,12 @@ data.Self_Employed = data.Self_Employed.fillna("No")
 data.LoanAmount = data.LoanAmount.fillna(data.LoanAmount.mean())
 data.Loan_Amount_Term = data.Loan_Amount_Term.fillna(360.0)
 data.Credit_History = data.Credit_History.fillna(1.0)
+
 After filling the missing values, the data is split into the input features (X) and target variable (y). The input features include all the variables except the loan approval status.
 
 X = data.iloc[:, 1: 12].values
 y = data.iloc[:, 12].values
+
 The next step is to split the data into the training and test set, which can be done using the train_test_split function from the sklearn.model_selection library.
 
 from sklearn.model_selection import train_test_split
